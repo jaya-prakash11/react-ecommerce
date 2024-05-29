@@ -8,35 +8,35 @@ function FooterComponent() {
           <div className="flex flex-col">
             <p className="font-medium">Home</p>
             <ul className="flex flex-col gap-1 mt-2">
-              <li className="font-thin">Our Story</li>
-              <li className="font-thin">Contact Us</li>
+              <li className="font-thin cursor-pointer">Our Story</li>
+              <li className="font-thin cursor-pointer">Contact Us</li>
             </ul>
           </div>
           <div className="flex flex-col xs:mt-6 md:mt-9">
             <p className="font-medium">Need Help ?</p>
             <ul className="flex flex-col mt-2 gap-1">
-              <li className="font-thin">1234567890</li>
-              <li className="font-thin">3456789012</li>
+              <li className="font-thin cursor-pointer">1234567890</li>
+              <li className="font-thin cursor-pointer">3456789012</li>
             </ul>
           </div>
         </div>
         <div className="flex flex-col xs:mt-6 md:mt-0">
           <p className="font-medium">Support</p>
           <ul className="flex flex-col mt-2 gap-1">
-            <li className="font-thin">FAQ</li>
-            <li className="font-thin">Terms & Conditions</li>
-            <li className="font-thin">Privacy Policy</li>
-            <li className="font-thin">Shipping Policy</li>
-            <li className="font-thin">Return & Refund Policy</li>
+            <li className="font-thin cursor-pointer">FAQ</li>
+            <li className="font-thin cursor-pointer">Terms & Conditions</li>
+            <li className="font-thin cursor-pointer">Privacy Policy</li>
+            <li className="font-thin cursor-pointer">Shipping Policy</li>
+            <li className="font-thin cursor-pointer">Return & Refund Policy</li>
           </ul>
         </div>
         <div className="flex flex-col xs:mt-6 md:mt-0 h-auto">
           <p className="font-medium">Shop</p>
           <ul className="flex flex-col mt-2 gap-1">
-            <li className="font-thin">Electronic</li>
-            <li className="font-thin">Jewellery</li>
-            <li className="font-thin">Men's Clothing</li>
-            <li className="font-thin">Womens's Clothing</li>
+            <li className="font-thin cursor-pointer">Electronic</li>
+            <li className="font-thin cursor-pointer">Jewellery</li>
+            <li className="font-thin cursor-pointer">Men's Clothing</li>
+            <li className="font-thin cursor-pointer">Womens's Clothing</li>
           </ul>
         </div>
         <div className="flex flex-col h-full">

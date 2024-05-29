@@ -9,7 +9,7 @@ import {
 
 function HeaderComponent() {
   return (
-    <div className="flex w-screen h-20 border-b-2 border-b-black  font-titleFont items-center justify-center">
+    <div className="flex w-full h-20 border-b-2 border-b-black  font-titleFont items-center justify-center">
       <div className="flex w-full h-full justify-between items-center lg:mx-32 xs:mx-6">
         <div className="flex justify-center items-center gap-2">
           <img className="xs:h-5 sm:h-6 lg:h-12 " src={Ecommercelogo}></img>

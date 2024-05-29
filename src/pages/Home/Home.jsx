@@ -4,7 +4,7 @@ import ProductComponent from "../../components/Product/ProductComponent";
 
 export default function Home() {
   return (
-    <div className="flex w-screen flex-col  h-auto">
+    <div className="flex md:w-full xs:w-[414px] flex-col  h-auto">
       <Banner />
       <ProductComponent />
     </div>
