@@ -1,12 +1,14 @@
 import React from "react";
 import Banner from "../../components/Banner/Banner";
-import ProductComponent from "../../components/Product/ProductComponent";
+import ProductComponent from "../../components/ProductComponents/ProductComponent";
+import ProductComponent2 from "../../components/ProductComponents/ProductComponent2";
 
 export default function Home() {
   return (
-    <div className="flex md:w-full xs:w-[414px] flex-col  h-auto">
+    <div className="flex sm:w-full xs:w-[414px] flex-col  xs:px-2 sm:px-3 xl:px-0 h-auto">
       <Banner />
       <ProductComponent />
+      <ProductComponent2 />
     </div>
   );
 }

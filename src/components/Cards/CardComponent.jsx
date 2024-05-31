@@ -5,12 +5,17 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 
-function CardComponent() {
+function CardComponent({ style }) {
   const [isWishList, setIsWishList] = useState(false);
+
+  let cardStyle =
+    style == "banner"
+      ? "flex flex-col  bg-white border border-gray-200 shadow-2xl   dark:border-neutral-700 sm:h-60 sm:w-48  md:h-56 md:w-52 lg:h-72 lg:w-72 "
+      : "flex xs:h-52 xs:w-48    sm:h-72 sm:w-72   md:h-60 md:w-56 lg:h-80 lg:w-80 xl:h-72 xl:w-64 flex-col bg-white border border-gray-200 shadow-2xl   dark:border-neutral-700 ";
   return (
     <>
-      <div class="flex h-72 w-64 flex-col bg-white border border-gray-200 shadow-sm   dark:border-neutral-700 ">
-        <div class=" flex  w-full h-[80%] overflow-hidden relative group">
+      <div class={cardStyle}>
+        <div class=" flex h- w-full h-[80%] overflow-hidden relative group">
           <div className=" flex absolute z-50 w-[40px] h-[40px] transition-all duration-500 -right-36 group-hover:right-0 justify-center items-center">
             {" "}
             {!isWishList ? (
