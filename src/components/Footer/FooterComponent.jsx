@@ -2,7 +2,7 @@ import React from "react";
 
 function FooterComponent() {
   return (
-    <div className="flex w-full xs:h-[1000px] md:h-72 bg-black px-[12%] text-white">
+    <div className="flex w-full xs:h-[1000px] md:h-72 bg-black px-[12%] text-white mt-10">
       <div className="grid  w-full  md:grid-cols-4  xs:grid-cols-1 xs:grid-rows-4 md:grid-rows-1  mt-8">
         <div className="grid grid-flow-row">
           <div className="flex flex-col">

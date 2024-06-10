@@ -1,14 +1,12 @@
 import React from "react";
 import CardComponent from "../Cards/CardComponent.jsx";
 
-export default function ProductComponent() {
+export default function ProductComponent({ title }) {
   return (
-    <div className=" flex flex-col w-full py-4  xl:px-[9%] 2xl:px-[12%] h-auto">
+    <div className=" flex flex-col w-full py-4  xl:px-[15px] 2xl:px-[16%] h-auto">
       <div className="flex flex-col w-full h-auto gap-3">
         <div className="flex w-full h-auto">
-          <p className=" xs:text-[20px] sm:text-5xl font-bold">
-            Everyday Shopping
-          </p>
+          <p className=" xs:text-[20px] sm:text-5xl font-bold">{title}</p>
         </div>
         <div className=" flex w-full  xs:flex-col-reverse  sm:flex-col">
           <div className="flex w-full sm:h-auto lg:h-24 ">
@@ -28,7 +26,7 @@ export default function ProductComponent() {
               </button>
             </div>
           </div>
-          <div className="flex sm:w-full h-auto xs:justify-between md:justify-start lg:gap-x-5 md:gap-x-9 lg: xl:gap-x-2 2xl:justify-between  xs:w-[400px]  flex-wrap xs:gap-y-5 xs:mt-0 sm:mt-5  ">
+          <div className="flex sm:w-full h-auto xs:justify-between md:justify-start lg:gap-x-5 md:gap-x-9 xl:gap-x-0 xl:gap-y-0 xl:justify-between xs:w-[400px]  flex-wrap xs:gap-y-5 xs:mt-0 sm:mt-5  ">
             <CardComponent style={"basic"} />
             <CardComponent style={"basic"} />
             <CardComponent style={"basic"} />

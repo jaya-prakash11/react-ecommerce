@@ -1,12 +1,12 @@
 import React from "react";
 import CardComponent from "../Cards/CardComponent.jsx";
 
-export default function ProductComponent2() {
+export default function ProductComponent2({ title }) {
   return (
-    <div className=" flex flex-col w-full py-4  xl:px-[9%] 2xl:px-[12%] h-auto">
+    <div className=" flex flex-col w-full py-4  xl:px-[15px] 2xl:px-[16%] h-auto">
       <div className="flex flex-col w-full h-auto gap-3">
         <div className="flex w-full h-auto">
-          <p className=" xs:text-[20px] sm:text-5xl font-bold">Electronics</p>
+          <p className=" xs:text-[20px] sm:text-5xl font-bold">{title}</p>
         </div>
         <div className=" xs:flex sm:hidden w-full  xs:flex-col-reverse  sm:flex-col">
           <div className="flex w-full sm:h-auto lg:h-24 ">
@@ -53,14 +53,14 @@ export default function ProductComponent2() {
             </div>
           </div>
           <div className="flex sm:w-full xs:w-[400px] sm: gap-x-2 md:gap-x-8 mt-4">
-            <div className="flex w-[35%] sm:h-[750px] lg:h-[950px]  bg-black">
+            <div className="flex w-[35%] sm:h-[750px] lg:h-[950px] xl:h-[550px]  2xl:h-[625px]  bg-black">
               <img
                 class=" object-cover w-full h-full"
                 src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                 alt=""
               />
             </div>
-            <div className="flex flex-wrap sm:h-[750px] lg:h-[950px] w-[65%] xs:justify-between md:justify-start md:gap-x-9 md:gap-y-8 lg:gap-x-11 lg:gap-y-7 ">
+            <div className="flex flex-wrap sm:h-[750px] lg:h-[950px] xl:h-[550px] 2xl:h-[625px] w-[65%] xs:justify-between md:justify-start md:gap-x-9 md:gap-y-8 lg:gap-x-11 lg:gap-y-7 xl:gap-x-4 2xl:gap-[2%] xl:gap-y-0">
               <CardComponent style={"banner"} />
               <CardComponent style={"banner"} />
               <CardComponent style={"banner"} />
