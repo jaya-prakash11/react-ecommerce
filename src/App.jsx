@@ -11,6 +11,7 @@ import WishListPage from "./pages/Wishlist/WishListPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import Sidebar from "./components/Sidebar/sidebar";
 import {
   createBrowserRouter,
   Outlet,
@@ -18,11 +19,18 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 const Layout = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSlideover = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       <HeaderComponent />
+      <button onClick={() => toggleSlideover()}>Toogle</button>
       <Outlet />
       <FooterComponent />
+      <Sidebar {...{ toggleSlideover, isOpen }} />
     </>
   );
 };
