@@ -7,8 +7,11 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function HeaderComponent() {
+  const { category } = useSelector((state) => state.category);
+
   return (
     <div>
       <div className="flex  xs:w-[414px] sm:w-full h-20 border-b-[1px] border-b-[#00000033]  font-titleFont items-center justify-center">
@@ -29,7 +32,7 @@ function HeaderComponent() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/checkout"}>
+                <NavLink to={"/profile"}>
                   <AiOutlineUser className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 " />
                 </NavLink>
               </li>
@@ -50,30 +53,14 @@ function HeaderComponent() {
       </div>
       <div className=" xs:hidden md:flex  xs:w-[414px] sm:w-full h-10 border-b-[1px] border-b-[#00000033]  font-titleFont items-center justify-center">
         <ul className="flex gap-4 h-full items-center">
-          <NavLink
-            to={`/ProductListPage/${1}`}
-            className="font-bold cursor-pointer"
-          >
-            Mens Clothing
-          </NavLink>
-          <NavLink
-            to={`/ProductListPage/${1}`}
-            className="font-bold cursor-pointer"
-          >
-            Womens Clothing
-          </NavLink>
-          <NavLink
-            to={`/ProductListPage/${1}`}
-            className="font-bold cursor-pointer"
-          >
-            Jeweleries
-          </NavLink>
-          <NavLink
-            to={`/ProductListPage/${1}`}
-            className="font-bold cursor-pointer"
-          >
-            Electronics
-          </NavLink>
+          {category.map((res) => (
+            <NavLink
+              to={`/ProductListPage/${res}`}
+              className="font-bold cursor-pointer"
+            >
+              {res}
+            </NavLink>
+          ))}
         </ul>
       </div>
     </div>

@@ -10,12 +10,17 @@ import { useNavigate } from "react-router-dom";
 import ModalComponent from "../modal/ModalComponent";
 import WishListPage from "../../pages/Wishlist/WishListPage";
 
-function CardComponent({ style }) {
+function CardComponent({ style, price, image, title, productId }) {
   let navigation = useNavigate();
 
   const [isWishList, setIsWishList] = useState(false);
   const [isAddToCart, setIsAddToCart] = useState(false);
 
+  const DEFAULT_IMAGE =
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+  let productImage = image ? image : DEFAULT_IMAGE;
+
+  let productTitle = title?.substring(0, 10);
   function addToCart() {
     setIsAddToCart(true);
   }
@@ -27,14 +32,15 @@ function CardComponent({ style }) {
   return (
     <>
       <div
-        onClick={() => {
-          navigation("/Product/:1");
+        onClick={(e) => {
+          navigation(`/Product/${productId}`);
           console.log("inside product");
+          e.stopPropagation();
         }}
         class={cardStyle}
       >
-        <div class=" flex h- w-full h-[80%] overflow-hidden relative group ">
-          <div className=" flex absolute z-50 w-[40px] h-[40px] transition-all duration-500 -right-36 group-hover:right-0 justify-center items-center">
+        <div class=" flex h- w-full h-[80%] overflow-hidden relative group  justify-center items-center">
+          <div className=" flex absolute z-50 w-[40px] h-[40px] transition-all duration-500   -right-36 group-hover:right-0 top-0  justify-center items-center">
             {" "}
             {!isWishList ? (
               <AiOutlineHeart
@@ -42,7 +48,7 @@ function CardComponent({ style }) {
                   setIsWishList(true);
                   e.stopPropagation();
                 }}
-                className="text-2xl cursor-pointer"
+                className="text-2xl cursor-pointer "
               />
             ) : (
               <AiFillHeart
@@ -55,8 +61,8 @@ function CardComponent({ style }) {
             )}
           </div>
           <img
-            class=" object-cover w-full scale-110 transition-all duration-1000 group-hover:scale-150"
-            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            class="  w-[80%] h-[80%] scale-110 transition-all duration-1000 group-hover:scale-150"
+            src={productImage}
             alt=""
           />
           <div className=" flex flex-col absolute z-50 w-full h-[30px] bg-red-500 transition-all duration-500 -bottom-36 group-hover:bottom-0 justify-center items-center">
@@ -75,11 +81,11 @@ function CardComponent({ style }) {
 
         <div className="flex w-full h-[20%] flex-col ">
           <div className="flex w-full h-[50%] px-2 font-medium text-[15px]">
-            <p>Title</p>
+            <p>{productTitle}</p>
           </div>
           <div className="flex w-full h-[50%] px-2">
             <div className="flex w-full h-[50%] font-normal  text-[15px]">
-              Rs 10000
+              Rs. {price}
             </div>
           </div>
         </div>

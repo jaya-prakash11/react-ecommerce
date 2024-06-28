@@ -48,11 +48,11 @@ const router = createBrowserRouter([
         element: <Cartpage />,
       },
       {
-        path: "/ProductListPage/:categoryId",
+        path: "/ProductListPage/:category",
         element: <ProductPage />,
       },
       {
-        path: "/Product/:id",
+        path: "/Product/:productId",
         element: <ProductDetailPage />,
       },
       {

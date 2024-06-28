@@ -6,8 +6,10 @@ import {
   AiOutlineShoppingCart,
   AiOutlineClose,
 } from "react-icons/ai";
+import { useParams } from "react-router-dom";
 
 function ProductDetailPage() {
+  const { productId } = useParams();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isWishList, setIsWishList] = useState(false);
   const [isAddToCart, setIsAddToCart] = useState(false);

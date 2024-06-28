@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardComponent from "../Cards/CardComponent.jsx";
+import { useNavigate } from "react-router-dom";
 
-export default function ProductComponent({ title }) {
+export default function ProductComponent({ title, value = [], to = "" }) {
+  const [products, setProducts] = useState();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let a = value.slice(0, 5);
+    console.log("sdsddddd", a);
+    setProducts(a);
+  }, [value]);
+
+  console.log("asdsadadsd", products);
   return (
     <div className=" flex flex-col w-full py-4  xl:px-[15px] 2xl:px-[16%] h-auto">
       <div className="flex flex-col w-full h-auto gap-3">
@@ -21,17 +32,29 @@ export default function ProductComponent({ title }) {
               </p>
             </div>
             <div className=" flex xs:w-[100%] sm:w-[20%] h-full  justify-end items-start xs:pt-3">
-              <button className="border border-black h-11 sm:w-56 xs:w-full  xs:text-sm md:text-lg font-bold hover:bg-black hover:text-white ">
+              <button
+                onClick={() => {
+                  navigate(`/ProductListPage/${to}`);
+                }}
+                className="border border-black h-11 sm:w-56 xs:w-full  xs:text-sm md:text-lg font-bold hover:bg-black hover:text-white "
+              >
                 Shop All
               </button>
             </div>
           </div>
           <div className="flex sm:w-full h-auto xs:justify-between md:justify-start lg:gap-x-5 md:gap-x-9 xl:gap-x-0 xl:gap-y-0 xl:justify-between xs:w-[400px]  flex-wrap xs:gap-y-5 xs:mt-0 sm:mt-5  ">
+            {products?.map((res) => (
+              <CardComponent
+                title={res.title}
+                image={res.image}
+                price={res.price}
+                style={"basic"}
+                productId={res.id}
+              />
+            ))}
+            {/* <CardComponent style={"basic"} />
             <CardComponent style={"basic"} />
-            <CardComponent style={"basic"} />
-            <CardComponent style={"basic"} />
-            <CardComponent style={"basic"} />
-            <CardComponent style={"basic"} />
+            <CardComponent style={"basic"} /> */}
           </div>
         </div>
       </div>
