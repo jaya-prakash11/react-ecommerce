@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.2.5",
+    "antd": "^5.18.3",
     "axios": "^1.7.2",
+    "bootstrap": "^5.3.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.3",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "react-multi-carousel": "^2.8.5",
@@ -29,6 +33,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
+    "sass": "^1.77.6",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"
   }

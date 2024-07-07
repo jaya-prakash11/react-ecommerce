@@ -7,8 +7,8 @@ import {
   getCategory,
   getAllProductsByCategoryId,
 } from "../../Redux/feature/category/CategorySlice";
+import ProfilePage from "../Profile/profilePage";
 
-//  ["electronics", "jewelery", "men's clothing", "women's clothing"];
 export default function Home() {
   const [cate, setCat] = useState();
   const dispatch = useDispatch();
@@ -35,8 +35,9 @@ export default function Home() {
   console.log("ProductsSSS", cate);
 
   return (
-    <div className="flex sm:w-full xs:w-[414px] flex-col  xs:px-2 sm:px-3 xl:px-0 h-auto">
+    <div className="flex sm:w-full xs:w-[414px] flex-col  xs:px-2 sm:px-3 xl:px-0 h-auto justify-center items-center">
       <Banner />
+      <ProfilePage />
       <ProductComponent
         value={cate?.electronics}
         to={"electronics"}

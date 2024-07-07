@@ -31,6 +31,8 @@ export default function ProductPage({}) {
             price={res.price}
             image={res.image}
             title={res.title}
+            productId={res.id}
+            product={res}
           />
         ))}
       </div>

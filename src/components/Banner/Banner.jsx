@@ -17,7 +17,7 @@ export default function Banner() {
   };
   console.log("Slide", currentSlide);
   return (
-    <div className="w-full h-auto overflow-x-hidden">
+    <div className="xs:w-full xl:w-[80%] h-auto overflow-x-hidden ">
       <div className="w-full relative ">
         <div
           style={{ transform: `translateX(-${currentSlide * 100}vw)` }}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductComponent2({ title, value = [], to = "" }) {
   const navigate = useNavigate();
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     let a = value.slice(0, 6);
     console.log("sdsddddd", a);
@@ -48,6 +48,8 @@ export default function ProductComponent2({ title, value = [], to = "" }) {
                 image={res.image}
                 price={res.price}
                 style={"basic"}
+                productId={res.id}
+                product={res}
               />
             ))}
           </div>
@@ -85,6 +87,8 @@ export default function ProductComponent2({ title, value = [], to = "" }) {
                   image={res.image}
                   price={res.price}
                   style={"banner"}
+                  productId={res.id}
+                  product={res}
                 />
               ))}
             </div>

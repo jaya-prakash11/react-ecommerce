@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import HeaderComponent from "./components/Header/HeaderComponent";
@@ -8,32 +8,62 @@ import Home from "./pages/Home/Home";
 import Cartpage from "./pages/cart/Cartpage";
 import ProductPage from "./pages/Product/ProductPage";
 import WishListPage from "./pages/Wishlist/WishListPage";
-import ProfilePage from "./pages/Profile/ProfilePage";
+import LoginPage from "./pages/Login/login";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import Sidebar from "./components/Sidebar/sidebar";
+import { toogleContext } from "./context/ToogleProvider";
 import {
   createBrowserRouter,
+  NavLink,
   Outlet,
   RouterProvider,
   ScrollRestoration,
+  useLocation,
 } from "react-router-dom";
-const Layout = () => {
-  const [isOpen, setIsOpen] = useState(false);
+import { useSelector } from "react-redux";
+import { authContext } from "./context/authContext";
 
-  const toggleSlideover = () => {
-    setIsOpen(!isOpen);
-  };
+const Layout = () => {
+  const cart = useSelector((state) => state.user.cart.cartItems);
+  const { toogle, setToogle } = useContext(toogleContext);
+
+  useEffect(() => {
+    if (cart.length !== 0) {
+      setToogle(true);
+    }
+  }, [cart.length]);
+
   return (
     <>
       <HeaderComponent />
-      <button onClick={() => toggleSlideover()}>Toogle</button>
       <Outlet />
       <FooterComponent />
-      <Sidebar {...{ toggleSlideover, isOpen }} />
+      <Sidebar {...{ isOpen: toogle }} />
     </>
   );
 };
+
+const RouteAuthorization = () => {
+  const { auth } = useContext(authContext);
+  const location = useLocation();
+
+  let isAllowed = !!auth.accestoken;
+  console.log("authrty", auth, !!auth.accestoken);
+
+  return (
+    <>
+      {isAllowed ? (
+        <Outlet />
+      ) : (
+        <NavLink to={"/login"} state={{ from: location }} replace>
+          Please LOGIn
+        </NavLink>
+      )}
+    </>
+  );
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,10 +73,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/cart",
-        element: <Cartpage />,
-      },
+
       {
         path: "/ProductListPage/:category",
         element: <ProductPage />,
@@ -56,16 +83,28 @@ const router = createBrowserRouter([
         element: <ProductDetailPage />,
       },
       {
-        path: "/wishlist",
-        element: <WishListPage />,
+        path: "/login",
+        element: <LoginPage />,
       },
+
+      //ProtectedRuotes
+
       {
-        path: "/checkout",
-        element: <CheckoutPage />,
-      },
-      {
-        path: "/profile",
-        element: <ProfilePage />,
+        element: <RouteAuthorization />,
+        children: [
+          {
+            path: "/checkout",
+            element: <CheckoutPage />,
+          },
+          {
+            path: "/wishlist",
+            element: <WishListPage />,
+          },
+          {
+            path: "/cart",
+            element: <Cartpage />,
+          },
+        ],
       },
     ],
   },

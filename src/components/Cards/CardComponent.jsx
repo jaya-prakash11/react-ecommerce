@@ -9,9 +9,19 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ModalComponent from "../modal/ModalComponent";
 import WishListPage from "../../pages/Wishlist/WishListPage";
+import {
+  addWishlist,
+  removeWishlist,
+} from "../../Redux/feature/wishList/wishList";
+import { useDispatch, useSelector } from "react-redux";
 
-function CardComponent({ style, price, image, title, productId }) {
+function CardComponent({ style, price, image, title, productId, product }) {
+  const dispatch = useDispatch();
+
+  console.log("productId", productId);
   let navigation = useNavigate();
+  const wishList = useSelector((state) => state?.user?.wishlist?.wishlistItems);
+  let isWishListAdded = wishList?.some((res) => res.id == productId);
 
   const [isWishList, setIsWishList] = useState(false);
   const [isAddToCart, setIsAddToCart] = useState(false);
@@ -35,28 +45,28 @@ function CardComponent({ style, price, image, title, productId }) {
         onClick={(e) => {
           navigation(`/Product/${productId}`);
           console.log("inside product");
-          e.stopPropagation();
+          // e.stopPropagation();
         }}
         class={cardStyle}
       >
         <div class=" flex h- w-full h-[80%] overflow-hidden relative group  justify-center items-center">
           <div className=" flex absolute z-50 w-[40px] h-[40px] transition-all duration-500   -right-36 group-hover:right-0 top-0  justify-center items-center">
             {" "}
-            {!isWishList ? (
-              <AiOutlineHeart
-                onClick={(e) => {
-                  setIsWishList(true);
-                  e.stopPropagation();
-                }}
-                className="text-2xl cursor-pointer "
-              />
-            ) : (
+            {isWishListAdded ? (
               <AiFillHeart
                 onClick={(e) => {
-                  setIsWishList(false);
+                  dispatch(removeWishlist(product));
                   e.stopPropagation();
                 }}
                 className="text-2xl cursor-pointer text-red-900 "
+              />
+            ) : (
+              <AiOutlineHeart
+                onClick={(e) => {
+                  dispatch(addWishlist(product));
+                  e.stopPropagation();
+                }}
+                className="text-2xl cursor-pointer "
               />
             )}
           </div>
@@ -90,60 +100,13 @@ function CardComponent({ style, price, image, title, productId }) {
           </div>
         </div>
       </div>
-      {/* <div
-        className={`${
-          isAddToCart ? "flex" : "hidden"
-        } absolute h-[100vh] w-full bg-[#ffffffd4]  z-50 top-0 right-0 items-center justify-center `}
-      >
-        <div className="flex flex-col xs:h-[400px] xs:w-[390px] bg-white shadow-3xl">
-          <div className="flex justify-end">
-            <AiOutlineClose
-              onClick={() => setIsAddToCart(false)}
-              className="text-2xl cursor-pointer"
-            />
-          </div>
-          <div className="flex flex-col px-3 mt-6">
-            <p className="text-3xl font-bold">Mobile Phone</p>
-            <p className="text-lg mt-6">Rs. 100.00</p>
-            {1 < 2 ? (
-              <div>
-                <p className="text-lg mt-6">Size Regular</p>
-                <p className="text-lg mt-6">Color</p>
-              </div>
-            ) : (
-              none
-            )}
-            <div className="flex w-full gap-x-5 mt-6">
-              <div className="flex w-36 h-10  border border-black justify-between items-center px-4 rounded-sm">
-                <p className="text-2xl font-bold cursor-pointer">-</p> <p>2</p>{" "}
-                <p className="text-xl font-bold cursor-pointer">+</p>
-              </div>
-              <div className="flex w-10 h-10 border border-black justify-center items-center rounded-sm">
-                {!isWishList ? (
-                  <AiOutlineHeart
-                    onClick={() => setIsWishList(true)}
-                    className="text-2xl cursor-pointer"
-                  />
-                ) : (
-                  <AiFillHeart
-                    onClick={() => setIsWishList(false)}
-                    className="text-2xl cursor-pointer text-red-900 "
-                  />
-                )}
-              </div>
-            </div>
-            <div className="flex w-full h-10  border border-black justify-between items-center px-4 rounded-sm mt-6  cursor-pointer">
-              <p className="text-md font-bold">Add to Cart</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <ModalComponent
         {...{
           isAddToCart,
           setIsAddToCart,
           isWishList,
           setIsWishList,
+          product,
         }}
       ></ModalComponent>
     </>

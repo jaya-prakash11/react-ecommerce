@@ -1,68 +1,99 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineHeart,
   AiFillHeart,
   AiOutlineShoppingCart,
   AiOutlineClose,
 } from "react-icons/ai";
+import { Button, Modal } from "antd";
+import ButtonComponent from "../Button/index";
+import {
+  addWishlist,
+  removeWishlist,
+} from "../../Redux/feature/wishList/wishList";
+import { addToCart } from "../../Redux/feature/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 function ModalComponent({
   isAddToCart,
   setIsAddToCart,
-  isWishList,
-  setIsWishList,
-  type = "card" ,
+  type = "card",
+  product = {},
 }) {
+  const dispatch = useDispatch();
+  const wishList = useSelector((state) => state?.user?.wishlist?.wishlistItems);
+  const cart = useSelector((state) => state?.user?.cart?.cartItems);
+  let isWishListAdded = wishList?.some((res) => res.id == product.id);
+  const [count, setCount] = useState(product?.count || 1);
+  let isAddedToCart = cart.find((res) => res.id == product.id) || {};
+
+  useEffect(() => {
+    setCount(product?.count || 1);
+  }, [product?.count]);
+
+  console.log("KLIO", Object.keys(isAddedToCart).length !== 0);
   return (
-    <div
-      className={`${
-        isAddToCart ? "flex" : "hidden"
-      } absolute h-[100vh] w-full bg-[#ffffffd4]  z-50 top-0 right-0 items-center justify-center `}
+    <Modal
+      centered
+      open={isAddToCart}
+      footer={null}
+      width={450}
+      onCancel={() => setIsAddToCart(false)}
     >
-      <div className="flex flex-col xs:h-[400px] xs:w-[390px] bg-white shadow-3xl">
-        <div className="flex justify-end">
-          <AiOutlineClose
-            onClick={() => setIsAddToCart(false)}
-            className="text-2xl cursor-pointer"
-          />
-        </div>
+      <div className="flex flex-col xs:h-[400px] ">
         <div className="flex flex-col px-3 mt-6">
-          <p className="text-3xl font-bold">Mobile Phone</p>
-          <p className="text-lg mt-6">Rs. 100.00</p>
+          <p className="text-3xl font-bold">
+            {product?.title?.substring(0, 10)}
+          </p>
+          <p className="text-lg mt-6">{product?.price}</p>
           {1 < 2 ? (
             <div>
-              <p className="text-lg mt-6">Size Regular</p>
-              <p className="text-lg mt-6">Color</p>
+              <p className="text-lg mt-6">Rating: {product?.rating?.rate}</p>
+              <p className="text-lg mt-6">Count: {product?.rating?.count}</p>
             </div>
           ) : (
             none
           )}
           <div className="flex w-full gap-x-5 mt-6">
-            <div className="flex w-36 h-10  border border-black justify-between items-center px-4 rounded-sm">
-              <p className="text-2xl font-bold cursor-pointer">-</p> <p>2</p>{" "}
-              <p className="text-xl font-bold cursor-pointer">+</p>
-            </div>
+            <ButtonComponent productCount={count} setProductCount={setCount} />
             <div className="flex w-10 h-10 border border-black justify-center items-center rounded-sm">
-              {!isWishList ? (
-                <AiOutlineHeart
-                  onClick={() => setIsWishList(true)}
-                  className="text-2xl cursor-pointer"
+              {isWishListAdded ? (
+                <AiFillHeart
+                  onClick={() => dispatch(removeWishlist(product))}
+                  className="text-2xl cursor-pointer text-red-900 "
                 />
               ) : (
-                <AiFillHeart
-                  onClick={() => setIsWishList(false)}
-                  className="text-2xl cursor-pointer text-red-900 "
+                <AiOutlineHeart
+                  onClick={() => dispatch(addWishlist(product))}
+                  className="text-2xl cursor-pointer"
                 />
               )}
             </div>
           </div>
-          <div className="flex w-full h-10  border border-black justify-between items-center px-4 rounded-sm mt-6  cursor-pointer">
-            <p className="text-md font-bold">
-              {type == "card" ? "Add to Cart" : "Replace Item"}
-            </p>
-          </div>
+
+          <button
+            onClick={() => {
+              dispatch(
+                addToCart({
+                  ...product,
+                  count:
+                    Object.keys(isAddedToCart).length !== 0 && type == "card"
+                      ? isAddedToCart?.count + count
+                      : count,
+                })
+              );
+              setIsAddToCart(false);
+              if (type == "card") {
+                setCount(1);
+              }
+            }}
+            className="border border-black h-10 xl:w-full sm:w-56 xs:w-full text-md font-bold hover:bg-black hover:text-white px-4  mt-6 "
+          >
+            <p className="text-left">Add to cart</p>
+          </button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }
 

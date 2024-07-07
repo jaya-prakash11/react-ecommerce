@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Ecommercelogo from "../../assets/img/e-commercelogo.png";
 import {
   AiOutlineSearch,
@@ -8,9 +8,12 @@ import {
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { toogleContext } from "../../context/ToogleProvider";
 
 function HeaderComponent() {
   const { category } = useSelector((state) => state.category);
+  const { toogle, setToogle, isSearchOpen, setISearchOpen } =
+    useContext(toogleContext);
 
   return (
     <div>
@@ -27,12 +30,16 @@ function HeaderComponent() {
           <div>
             <ul className="flex items-center gap-4">
               <li>
-                <NavLink to={`/Product/:2`}>
+                <NavLink
+                  onClick={() => {
+                    setToogle(true), setISearchOpen(true);
+                  }}
+                >
                   <AiOutlineSearch className=" transform md:text-[22px] xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150  " />
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/profile"}>
+                <NavLink to={"/login"}>
                   <AiOutlineUser className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 " />
                 </NavLink>
               </li>
@@ -42,9 +49,9 @@ function HeaderComponent() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/cart"}>
+                <ul onClick={() => setToogle(true)}>
                   <AiOutlineShoppingCart className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 " />
-                </NavLink>
+                </ul>
               </li>
             </ul>
           </div>

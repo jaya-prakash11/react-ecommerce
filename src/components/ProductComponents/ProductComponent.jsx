@@ -50,11 +50,9 @@ export default function ProductComponent({ title, value = [], to = "" }) {
                 price={res.price}
                 style={"basic"}
                 productId={res.id}
+                product={res}
               />
             ))}
-            {/* <CardComponent style={"basic"} />
-            <CardComponent style={"basic"} />
-            <CardComponent style={"basic"} /> */}
           </div>
         </div>
       </div>
