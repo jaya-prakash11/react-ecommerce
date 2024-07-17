@@ -19,7 +19,6 @@ const cartSlice = createSlice({
         }
       });
 
-      console.log("payloadio", item?.count, payload?.count, payload?.exCount);
       if (item) {
         console.log("inside if");
         state.cartItems[index] = {
@@ -27,13 +26,8 @@ const cartSlice = createSlice({
           count: payload.count,
         };
       } else {
-        console.log("inside else");
-
         state.cartItems.push({
           ...payload,
-          total: function () {
-            return this.price * this.count;
-          },
         });
       }
     },

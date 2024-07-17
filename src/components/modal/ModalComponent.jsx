@@ -21,8 +21,12 @@ function ModalComponent({
   product = {},
 }) {
   const dispatch = useDispatch();
-  const wishList = useSelector((state) => state?.user?.wishlist?.wishlistItems);
-  const cart = useSelector((state) => state?.user?.cart?.cartItems);
+  const wishList = useSelector(
+    (state) => state?.eShopeReducer?.user?.wishlist?.wishlistItems
+  );
+  const cart = useSelector(
+    (state) => state?.eShopeReducer?.user?.cart?.cartItems
+  );
   let isWishListAdded = wishList?.some((res) => res.id == product.id);
   const [count, setCount] = useState(product?.count || 1);
   let isAddedToCart = cart.find((res) => res.id == product.id) || {};

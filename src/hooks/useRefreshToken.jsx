@@ -14,7 +14,7 @@ function useRefreshToken() {
     setAuth((prev) => {
       return {
         ...prev,
-        accestoken: response.data.access_token,
+        accesstoken: response.data.access_token,
         refreshtoken: response.data.refresh_token,
       };
     });

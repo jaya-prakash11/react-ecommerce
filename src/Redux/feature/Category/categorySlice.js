@@ -102,4 +102,5 @@ export const {} = categorySlice.actions;
 
 export default categorySlice.reducer;
 
-export const getProductonCategory = (state) => state.category.products;
+export const getProductonCategory = (state) =>
+  state.eShopeReducer.category.products;

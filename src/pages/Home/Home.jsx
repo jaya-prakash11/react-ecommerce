@@ -13,7 +13,7 @@ export default function Home() {
   const [cate, setCat] = useState();
   const dispatch = useDispatch();
   const { category, allCategoryProducts } = useSelector(
-    (state) => state.category
+    (state) => state?.eShopeReducer?.category
   );
   useEffect(() => {
     dispatch(getCategory());
@@ -37,7 +37,6 @@ export default function Home() {
   return (
     <div className="flex sm:w-full xs:w-[414px] flex-col  xs:px-2 sm:px-3 xl:px-0 h-auto justify-center items-center">
       <Banner />
-      <ProfilePage />
       <ProductComponent
         value={cate?.electronics}
         to={"electronics"}

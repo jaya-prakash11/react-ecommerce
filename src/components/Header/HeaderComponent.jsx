@@ -9,11 +9,15 @@ import {
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toogleContext } from "../../context/ToogleProvider";
+import useAuth from "../../hooks/useAuth";
 
 function HeaderComponent() {
-  const { category } = useSelector((state) => state.category);
+  const { auth } = useAuth();
+  const { category } = useSelector((state) => state.eShopeReducer.category);
   const { toogle, setToogle, isSearchOpen, setISearchOpen } =
     useContext(toogleContext);
+
+  console.log(auth.accesstoken, "acess");
 
   return (
     <div>
@@ -39,7 +43,7 @@ function HeaderComponent() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/login"}>
+                <NavLink to={auth.accesstoken ? "/profile" : "/login"}>
                   <AiOutlineUser className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 " />
                 </NavLink>
               </li>

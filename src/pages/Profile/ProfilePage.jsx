@@ -1,36 +1,57 @@
 import React, { useEffect, useState } from "react";
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+
+import { Outlet, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+
 function ProfilePage() {
-  const [user, setUser] = useState();
-  const axiosprivate = useAxiosPrivate();
-
+  const navigate = useNavigate();
+  const { auth, setAuth } = useAuth();
   useEffect(() => {
-    console.log("UYstart");
-    // let isMounted = true;
-    const controller = new AbortController();
-    const getuser = async () => {
-      console.log("inside");
-      try {
-        let response = await axiosprivate.get("/profile");
-        console.log("UYuserd", response.data);
-        // isMounted && setUser(response);
-        setUser(response);
-      } catch (err) {
-        console.log("UYerr", err);
-      }
-      console.log("UYDone");
-    };
-
-    getuser();
-
-    // return () => {
-    //   isMounted = false;
-    //   controller.abort();
-    // };
+    console.log("insideprofile", auth);
+    if (auth.accesstoken) {
+      navigate("/profile/userInfo");
+    }
   }, []);
 
-  console.log("UsersDetail", user);
-  return <div>profile pages</div>;
+  const logOut = async () => {
+    setAuth({
+      // user: {},
+      // accesstoken: null,
+      // refreshToken: null,
+    });
+    navigate("/");
+  };
+
+  return (
+    <div className="flex  xs:flex-col md:flex-row w-full h-auto  xs:px-3 xl:px-[15px] 2xl:px-[16%] font-titleFont">
+      <div className="flex flex-col xs:w-[100%] md:w-[20%]  md:min-h-[90vh] pt-9 gap-y-6">
+        <p
+          className="text-lg cursor-pointer"
+          onClick={() => navigate("/profile/userInfo")}
+        >
+          Dashboard
+        </p>
+        <p
+          className="text-lg cursor-pointer"
+          onClick={() => navigate("/profile/address")}
+        >
+          Addresses
+        </p>
+        <p
+          onClick={() => navigate("/wishlist")}
+          className="text-lg cursor-pointer"
+        >
+          Wishlist
+        </p>
+        <p className="text-lg cursor-pointer" onClick={() => logOut()}>
+          Logout
+        </p>
+      </div>
+      <div className="flex flex-col xs:w-[100%] md:w-[80%] md:min-h-[90vh] pt-9 ]">
+        <Outlet />
+      </div>
+    </div>
+  );
 }
 
 export default ProfilePage;

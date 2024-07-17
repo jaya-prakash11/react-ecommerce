@@ -23,7 +23,9 @@ function Sidebar({ isOpen, toggleSlideover, side }) {
   const [searchText, setSearcText] = useState("");
   const [searcResult, setSearchResuts] = useState([]);
 
-  const cart = useSelector((state) => state?.user?.cart?.cartItems);
+  const cart = useSelector(
+    (state) => state?.eShopeReducer?.user?.cart?.cartItems
+  );
   console.log("sdfsdftext", cart);
 
   useEffect(() => {

@@ -3,7 +3,9 @@ import CardComponent from "../../components/Cards/CardComponent";
 import { useSelector } from "react-redux";
 
 function WishListPage() {
-  let wishlistData = useSelector((state) => state.user.wishlist.wishlistItems);
+  let wishlistData = useSelector(
+    (state) => state.eShopeReducer?.user.wishlist.wishlistItems
+  );
   return (
     <div className="flex flex-col w-full h-auto  xl:px-[15px] 2xl:px-[16%] font-titleFont">
       <div className="mt-5">

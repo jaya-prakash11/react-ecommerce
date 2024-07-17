@@ -20,12 +20,16 @@ import {
   RouterProvider,
   ScrollRestoration,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { authContext } from "./context/authContext";
+import ProfilePage from "./pages/Profile/profilePage";
+import Address from "./pages/Profile/address";
+import UserInfo from "./pages/Profile/userInfo";
 
 const Layout = () => {
-  const cart = useSelector((state) => state.user.cart.cartItems);
+  const cart = useSelector((state) => state.eShopeReducer?.user.cart.cartItems);
   const { toogle, setToogle } = useContext(toogleContext);
 
   useEffect(() => {
@@ -47,21 +51,11 @@ const Layout = () => {
 const RouteAuthorization = () => {
   const { auth } = useContext(authContext);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  let isAllowed = !!auth.accestoken;
-  console.log("authrty", auth, !!auth.accestoken);
+  let isAllowed = !!auth.accesstoken;
 
-  return (
-    <>
-      {isAllowed ? (
-        <Outlet />
-      ) : (
-        <NavLink to={"/login"} state={{ from: location }} replace>
-          Please LOGIn
-        </NavLink>
-      )}
-    </>
-  );
+  return <>{isAllowed ? <Outlet /> : <LoginPage />} </>;
 };
 
 const router = createBrowserRouter([
@@ -103,6 +97,14 @@ const router = createBrowserRouter([
           {
             path: "/cart",
             element: <Cartpage />,
+          },
+          {
+            path: "/profile",
+            element: <ProfilePage />,
+            children: [
+              { path: "/profile/userInfo", element: <UserInfo /> },
+              { path: "/profile/address", element: <Address /> },
+            ],
           },
         ],
       },

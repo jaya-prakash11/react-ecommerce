@@ -26,10 +26,14 @@ import { Button, Modal } from "antd";
 function ProductDetailPage() {
   const dispatch = useDispatch();
   const { productId } = useParams();
-  const cart = useSelector((state) => state?.user?.cart?.cartItems);
+  const cart = useSelector(
+    (state) => state?.eShopeReducer?.user?.cart?.cartItems
+  );
   const product = useSelector(getProductById);
   const numberOfProduct = useSelector(useGetNumberOfProducts);
-  const wishList = useSelector((state) => state?.user?.wishlist?.wishlistItems);
+  const wishList = useSelector(
+    (state) => state?.eShopeReducer?.user?.wishlist?.wishlistItems
+  );
   let cartedProduct = cart.find((res) => res.id == product.id);
 
   const [count, setCount] = useState(cartedProduct?.count || 1);

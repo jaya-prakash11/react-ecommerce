@@ -63,6 +63,7 @@ export default productSlice.reducer;
 
 export const {} = productSlice.actions;
 
-export const getProductById = (state) => state?.product.productDetails;
+export const getProductById = (state) =>
+  state?.eShopeReducer?.product.productDetails;
 export const useGetNumberOfProducts = (state) =>
-  state?.product.getNumberOfProducts;
+  state?.eShopeReducer?.product.getNumberOfProducts;

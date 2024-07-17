@@ -20,7 +20,9 @@ function CardComponent({ style, price, image, title, productId, product }) {
 
   console.log("productId", productId);
   let navigation = useNavigate();
-  const wishList = useSelector((state) => state?.user?.wishlist?.wishlistItems);
+  const wishList = useSelector(
+    (state) => state?.eShopeReducer?.user?.wishlist?.wishlistItems
+  );
   let isWishListAdded = wishList?.some((res) => res.id == productId);
 
   const [isWishList, setIsWishList] = useState(false);

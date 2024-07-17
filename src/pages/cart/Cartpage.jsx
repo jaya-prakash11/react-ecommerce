@@ -4,7 +4,9 @@ import Cartcardcomponent from "./components/Cartcardcomponent";
 import { useSelector } from "react-redux";
 import { getTotal } from "../../util/util";
 export default function Cartpage() {
-  const cartData = useSelector((state) => state.user.cart.cartItems);
+  const cartData = useSelector(
+    (state) => state?.eShopeReducer?.user.cart.cartItems
+  );
   return (
     <div className="flex flex-col w-full h-auto  xs:px-3 xl:px-[15px] 2xl:px-[16%] font-titleFont ">
       <div className="xs:hidden xl:flex w-full h-14 items-center justify-between xl:mt-5">

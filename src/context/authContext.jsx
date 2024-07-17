@@ -9,8 +9,6 @@ const AuthProvider = ({ children }) => {
     refreshToken: null,
   });
 
-  console.log("authToken", auth);
-
   return (
     <authContext.Provider value={{ auth, setAuth }}>
       {children}
