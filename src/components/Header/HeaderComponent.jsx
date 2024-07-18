@@ -6,19 +6,23 @@ import {
   AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toogleContext } from "../../context/ToogleProvider";
 import useAuth from "../../hooks/useAuth";
 
 function HeaderComponent() {
+  const navigate = useNavigate();
   const { auth } = useAuth();
   const { category } = useSelector((state) => state.eShopeReducer.category);
   const { toogle, setToogle, isSearchOpen, setISearchOpen } =
     useContext(toogleContext);
-
-  console.log(auth.accesstoken, "acess");
-
+  const { cart, wishlist } = useSelector((state) => state?.eShopeReducer?.user);
+  console.log(
+    "asdasdasdsad",
+    cart.cartItems.length,
+    wishlist.wishlistItems.length
+  );
   return (
     <div>
       <div className="flex  xs:w-[414px] sm:w-full h-20 border-b-[1px] border-b-[#00000033]  font-titleFont items-center justify-center">
@@ -47,14 +51,31 @@ function HeaderComponent() {
                   <AiOutlineUser className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 " />
                 </NavLink>
               </li>
-              <li>
-                <NavLink to={"/wishlist"}>
-                  <AiOutlineHeart className=" transform md:text-[22px]   xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150" />
-                </NavLink>
+              <li className="relative">
+                <ul
+                  className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 "
+                  onClick={() => navigate("/wishlist")}
+                >
+                  <div className="flex rounded-xl   h-3 w-3 bg-black absolute bottom-3 right-0 justify-center items-center">
+                    {" "}
+                    <p className="text-white text-[11px]">
+                      {wishlist?.wishlistItems?.length}
+                    </p>
+                  </div>
+                  <AiOutlineHeart />
+                </ul>
               </li>
-              <li>
-                <ul onClick={() => setToogle(true)}>
-                  <AiOutlineShoppingCart className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 " />
+              <li className="relative">
+                <ul
+                  className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 "
+                  onClick={() => setToogle(true)}
+                >
+                  <div className="flex rounded-xl   h-3 w-3 bg-black absolute bottom-3 right-0 justify-center items-center">
+                    <p className="text-white text-[11px]">
+                      {cart.cartItems.length}
+                    </p>
+                  </div>
+                  <AiOutlineShoppingCart />
                 </ul>
               </li>
             </ul>
