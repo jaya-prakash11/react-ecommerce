@@ -59,9 +59,8 @@ function LoginPage() {
 
   return (
     <div className="flex flex-col w-full h-[100vh]  xl:px-[15px] 2xl:px-[16%] font-titleFont">
-      <h1>{!!auth.accesstoken ? "Logout" : "SingedIn"}</h1>
       <div className="flex flex-col w-full h-full items-center justify-center">
-        <div className="flex flex-col w-[40%] h-[50vh] p-3 pt-8  items-center ">
+        <div className="flex flex-col  lg:w-[40%] h-[50vh] p-3 pt-8  items-center  ">
           {signup ? (
             <>
               <p className="text-3xl ">Signup</p>
@@ -130,13 +129,15 @@ function LoginPage() {
             </>
           ) : (
             <>
-              <p className="text-3xl ">Login</p>
+              <div className="flex lg:w-[80%]">
+                <p className="text-3xl ">Login</p>
+              </div>
               <Form
                 fields={[
                   { name: "email", value: email },
                   { name: "password", value: passsword },
                 ]}
-                className=" flex w-[50%] flex-col  mt-5"
+                className=" flex lg:w-[80%] flex-col  mt-5"
                 onFinish={onLoginHandel}
                 autoComplete="off"
               >
@@ -179,8 +180,8 @@ function LoginPage() {
                 <Button size="large" type="primary" htmlType="submit">
                   Submit
                 </Button>
-                <div className="flex flex-col cursor-pointer">
-                  <p onClick={() => setSignUp(true)}>create a new account</p>
+                <div className="flex flex-col cursor-pointer gap-3 mt-5">
+                  <p onClick={() => setSignUp(true)}>Create a new account</p>
                   <p>Forgot your password</p>
                 </div>
               </Form>

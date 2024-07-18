@@ -35,8 +35,8 @@ function UserInfo() {
       <p>
         Hello {userDetail?.name} (not {userDetail?.name}!) Logout
       </p>
-      <div>Order History</div>
-      <div className="flex flex-col">
+      <div className="mt-5">Order History</div>
+      <div className="flex flex-col mt-3">
         <p>Account Details</p>
         <div className="flex w-full h-52 border border-black mt-9">
           <div className="flex flex-col w-[50%] gap-y-3 border-r border-black pl-2">

@@ -19,7 +19,7 @@ function ButtonComponent({
         >
           -
         </p>{" "}
-        <p>{productCount}</p>{" "}
+        <p className="text-lg  font-sans font-medium">{productCount}</p>
         <p
           onClick={() => setProductCount((prev) => prev + 1)}
           className="text-2xl font-bold cursor-pointer"

@@ -49,11 +49,17 @@ function ModalComponent({
           <p className="text-3xl font-bold">
             {product?.title?.substring(0, 10)}
           </p>
-          <p className="text-lg mt-6">{product?.price}</p>
+          <p className="text-lg mt-6 font-sans font-medium">
+            Rs {product?.price}
+          </p>
           {1 < 2 ? (
             <div>
-              <p className="text-lg mt-6">Rating: {product?.rating?.rate}</p>
-              <p className="text-lg mt-6">Count: {product?.rating?.count}</p>
+              <p className="text-lg mt-6 font-sans font-medium">
+                Rating: {product?.rating?.rate}
+              </p>
+              <p className="text-lg mt-6 font-sans font-medium">
+                Count: {product?.rating?.count}
+              </p>
             </div>
           ) : (
             none

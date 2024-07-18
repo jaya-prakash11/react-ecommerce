@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import Cartcardcomponent from "./components/Cartcardcomponent";
 import { useSelector } from "react-redux";
 import { getTotal } from "../../util/util";
+import useToogle from "../../hooks/useToogle";
 export default function Cartpage() {
+  const { toogle, setToogle } = useToogle();
+
+  useEffect(() => {
+    setToogle(false);
+  }, []);
+
   const cartData = useSelector(
     (state) => state?.eShopeReducer?.user.cart.cartItems
   );

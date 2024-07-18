@@ -14,40 +14,39 @@ function ProfilePage() {
   }, []);
 
   const logOut = async () => {
-    setAuth({
-      // user: {},
-      // accesstoken: null,
-      // refreshToken: null,
-    });
+    setAuth({});
     navigate("/");
   };
 
   return (
     <div className="flex  xs:flex-col md:flex-row w-full h-auto  xs:px-3 xl:px-[15px] 2xl:px-[16%] font-titleFont">
-      <div className="flex flex-col xs:w-[100%] md:w-[20%]  md:min-h-[90vh] pt-9 gap-y-6">
-        <p
-          className="text-lg cursor-pointer"
+      <div className="flex flex-col xs:w-[100%] md:w-[15%]  md:min-h-[90vh] pt-9 xs:pb-4 gap-y-6  sm:border-b lg:border-b-0 lg:border-r  border-black">
+        <button
+          className="text-lg cursor-pointer dark:md:hover:bg-black  hover:text-white focus:bg-black focus:text-white flex pl-3"
           onClick={() => navigate("/profile/userInfo")}
         >
           Dashboard
-        </p>
-        <p
-          className="text-lg cursor-pointer"
+        </button>
+        <button
+          className="text-lg cursor-pointer dark:md:hover:bg-black  hover:text-white focus:bg-black focus:text-white flex pl-3"
           onClick={() => navigate("/profile/address")}
         >
           Addresses
-        </p>
-        <p
+        </button>
+        <button
+          className="text-lg cursor-pointer dark:md:hover:bg-black  hover:text-white focus:bg-black focus:text-white flex pl-3"
           onClick={() => navigate("/wishlist")}
-          className="text-lg cursor-pointer"
         >
           Wishlist
-        </p>
-        <p className="text-lg cursor-pointer" onClick={() => logOut()}>
+        </button>
+        <button
+          className="text-lg cursor-pointer dark:md:hover:bg-black  hover:text-white focus:bg-black focus:text-white flex pl-3"
+          onClick={() => logOut()}
+        >
           Logout
-        </p>
+        </button>
       </div>
-      <div className="flex flex-col xs:w-[100%] md:w-[80%] md:min-h-[90vh] pt-9 ]">
+      <div className="flex flex-col xs:w-[100%] md:w-[80%] md:min-h-[90vh] pt-9 pl-6 ]">
         <Outlet />
       </div>
     </div>

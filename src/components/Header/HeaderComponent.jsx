@@ -54,7 +54,9 @@ function HeaderComponent() {
               <li className="relative">
                 <ul
                   className=" transform md:text-[22px]  xs:text-[20px] cursor-pointer transition duration-500 hover:scale-150 "
-                  onClick={() => navigate("/wishlist")}
+                  onClick={() =>
+                    navigate(auth.accesstoken ? "/wishlist" : "/login")
+                  }
                 >
                   <div className="flex rounded-xl   h-3 w-3 bg-black absolute bottom-3 right-0 justify-center items-center">
                     {" "}

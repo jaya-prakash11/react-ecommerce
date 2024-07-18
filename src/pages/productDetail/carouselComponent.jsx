@@ -20,7 +20,6 @@ function CarouselComponent({ data }) {
       items: 2,
     },
   };
-  // let data = [1, 2, 3, 4, 5];
   let img =
     "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
   return (
@@ -32,7 +31,9 @@ function CarouselComponent({ data }) {
               <img className="object-cover" src={res.image}></img>
             </div>
             <div className="flex flex-col w-full h-[15%] ">
-              <p lassName=" xs:text-xs sm:text-sm lg:text-xs">{res.title}</p>
+              <p lassName=" xs:text-xs sm:text-sm lg:text-xs">
+                {res.title.substring(0, 10)}
+              </p>
               <p className=" xs:text-xs sm:text-sm lg:text-xs">Rs{res.price}</p>
             </div>
           </div>

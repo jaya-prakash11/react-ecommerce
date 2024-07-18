@@ -85,9 +85,13 @@ function ProductDetailPage() {
         </div>
         <div className="flex flex-col xs:w-[90%] md:w-[60%] gap-y-7 md:pl-8  xs:mt-10   ">
           <p className="font-bold text-4xl">{product?.title}</p>
-          <p>Rs {product?.price}</p>
-          <p>Rating: {product?.rating?.rate}</p>
-          <p>Num of orders in previous month: {product?.rating?.count}</p>
+          <p className="text-lg font-sans font-medium">Rs {product?.price}</p>
+          <p className="text-lg font-sans font-medium">
+            Rating: {product?.rating?.rate}
+          </p>
+          <p className="text-lg font-sans font-medium">
+            Num of orders in previous month: {product?.rating?.count}
+          </p>
           <div className="flex w-full gap-x-5 mt-6">
             <ButtonComponent productCount={count} setProductCount={setCount} />
             <button

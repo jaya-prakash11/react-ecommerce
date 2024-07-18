@@ -52,10 +52,17 @@ const RouteAuthorization = () => {
   const { auth } = useContext(authContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const navigatetoPage = () => {
+    navigate("/login");
+  };
 
   let isAllowed = !!auth.accesstoken;
 
-  return <>{isAllowed ? <Outlet /> : <LoginPage />} </>;
+  return (
+    <>
+      {isAllowed ? <Outlet /> : <p onClick={() => navigatetoPage()}>sadasd</p>}{" "}
+    </>
+  );
 };
 
 const router = createBrowserRouter([

@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import SidebarComponent from "./sidebarComponent";
 import { useSelector } from "react-redux";
 import { getTotal } from "../../util/util";
+import useToogle from "../../hooks/useToogle";
 
 const searchData = [
   { name: "apple" },
@@ -109,6 +110,7 @@ function Sidebar({ isOpen, toggleSlideover, side }) {
 
               <NavLink
                 to={"/cart"}
+                onClick={() => setToogle(false)}
                 className="flex h-11 justify-start items-end border-b-[1px] border-b-black mt-4"
               >
                 <p className="text-sm mb-3">View cart</p>
