@@ -77,7 +77,7 @@ function CardComponent({ style, price, image, title, productId, product }) {
             src={productImage}
             alt=""
           />
-          <div className=" flex flex-col absolute z-50 w-full h-[30px] bg-red-500 transition-all duration-500 lg:-bottom-36 xs:bottom-0 lg:group-hover:bottom-0 justify-center items-center">
+          <div className=" flex flex-col absolute lg:z-50 w-full h-[30px] transition-all duration-500 lg:-bottom-36 xs:bottom-0 lg:group-hover:bottom-0 justify-center items-center">
             <div className="flex w-full h-full">
               <div
                 onClick={(e) => {
