@@ -17,16 +17,16 @@ export default function Banner() {
   };
   console.log("Slide", currentSlide);
   return (
-    <div className="xs:w-full xl:w-[80%] h-auto overflow-x-hidden ">
+    <div className="xs:w-full h-auto overflow-x-hidden ">
       <div className="w-full relative ">
         <div
           style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
           className="w-[400vw] h-full flex transition-transform duration-1000"
         >
-          <img className="w-screen object-cover h-auto" src={Banners[0]}></img>
           <img className="w-screen object-cover h-auto" src={Banners[1]}></img>
-          <img className="w-screen object-cover h-auto" src={Banners[2]}></img>
           <img className="w-screen object-cover h-auto" src={Banners[3]}></img>
+          <img className="w-screen object-cover h-auto" src={Banners[2]}></img>
+          <img className="w-screen object-cover h-auto" src={Banners[0]}></img>
         </div>
         <div className="absolute w-fit bottom-5 left-0 right-0 mx-auto flex gap-40">
           <div
