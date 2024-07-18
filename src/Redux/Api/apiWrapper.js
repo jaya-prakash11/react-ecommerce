@@ -1,7 +1,6 @@
 import api from "./api";
 
 const get = async (url) => {
-  console.log("inside getkk");
   try {
     let res = await api.get(url);
     if (res && res.data) {

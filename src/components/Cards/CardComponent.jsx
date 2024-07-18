@@ -18,7 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
 function CardComponent({ style, price, image, title, productId, product }) {
   const dispatch = useDispatch();
 
-  console.log("productId", productId);
   let navigation = useNavigate();
   const wishList = useSelector(
     (state) => state?.eShopeReducer?.user?.wishlist?.wishlistItems
@@ -46,7 +45,6 @@ function CardComponent({ style, price, image, title, productId, product }) {
       <div
         onClick={(e) => {
           navigation(`/Product/${productId}`);
-          console.log("inside product");
           // e.stopPropagation();
         }}
         class={cardStyle}

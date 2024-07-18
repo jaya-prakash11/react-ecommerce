@@ -32,8 +32,6 @@ export default function Home() {
     setCat(ad);
   }, [allCategoryProducts]);
 
-  console.log("ProductsSSS", cate);
-
   return (
     <div className="flex sm:w-full xs:w-[414px] flex-col  xs:px-2 sm:px-3 xl:px-0 h-auto justify-center items-center">
       <Banner />

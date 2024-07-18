@@ -27,11 +27,9 @@ function Sidebar({ isOpen, toggleSlideover, side }) {
   const cart = useSelector(
     (state) => state?.eShopeReducer?.user?.cart?.cartItems
   );
-  console.log("sdfsdftext", cart);
 
   useEffect(() => {
     if (searchText.length !== 0) {
-      console.log("INSIDE SEARCHtETS");
       const data = setTimeout(() => {
         let result = searchData.filter((res) =>
           res.name.includes(searchText.toLowerCase())
@@ -41,12 +39,10 @@ function Sidebar({ isOpen, toggleSlideover, side }) {
 
       return () => clearTimeout(data);
     } else {
-      console.log("INSIDE ELSE");
       setSearchResuts([]);
     }
   }, [searchText]);
 
-  console.log("searcResul t", searcResult);
   return (
     <div
       id="slideover-container"

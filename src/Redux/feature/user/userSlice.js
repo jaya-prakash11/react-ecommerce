@@ -23,7 +23,6 @@ const userSlice = createSlice({
       state.address.push(payload);
     },
     editAddress(state, { payload }) {
-      console.log("iss");
       state.address = state.address.map((res) => {
         if (res.id == payload.id) {
           return payload;
@@ -33,11 +32,8 @@ const userSlice = createSlice({
       });
     },
     removeAddress(state, { payload }) {
-      console.log("payload", payload);
       let a = state.address.some((res) => res.id == payload.id);
-      console.log(a);
       state.address = state.address.filter((res) => res.id !== payload.id);
-      console.log(state.address);
     },
   },
 });

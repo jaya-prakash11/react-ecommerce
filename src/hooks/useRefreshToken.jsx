@@ -9,8 +9,6 @@ function useRefreshToken() {
       refreshToken: auth.refreshtoken,
     });
 
-    console.log("refereaaaaa", response);
-
     setAuth((prev) => {
       return {
         ...prev,

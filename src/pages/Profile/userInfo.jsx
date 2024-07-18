@@ -11,19 +11,16 @@ function UserInfo() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("UYstart");
     // let isMounted = true;
     const controller = new AbortController();
     const getuser = async () => {
-      console.log("inside");
       try {
         let response = await axiosprivate.get("/profile");
 
         dispatch(addUser(response.data));
       } catch (err) {
-        console.log("UYerr", err);
+        console.log(err);
       }
-      console.log("UYDone");
     };
 
     getuser();

@@ -29,12 +29,6 @@ export const getAllProductsByCategoryId = createAsyncThunk(
   "category/getAllProduct",
   async (categoryArr, thunkkit) => {
     try {
-      console.log("inside cas", categoryArr);
-
-      // categoryArr.forEach((element) => {
-      //   res = promise.any(Axios.get(`products/category/${element}`));
-      // });
-
       let res = await Promise.all(
         categoryArr.map(async (element) => {
           let products = await Axios.get(`products/category/${element}`);
@@ -44,7 +38,6 @@ export const getAllProductsByCategoryId = createAsyncThunk(
         })
       );
 
-      console.log("getAllProductsByCategoryId", res);
       return res;
     } catch (err) {
       console.log(err);
@@ -67,7 +60,6 @@ const categorySlice = createSlice({
         state.isloading = true;
       })
       .addCase(getCategory.fulfilled, (state, action) => {
-        console.log("payload", action.payload);
         state.isloading = false;
         state.category = action.payload;
       })
@@ -78,7 +70,6 @@ const categorySlice = createSlice({
         state.isloading = true;
       })
       .addCase(getProductsByCategoryId.fulfilled, (state, action) => {
-        console.log("payload", action.payload);
         state.isloading = false;
         state.products = action.payload;
       })
@@ -89,7 +80,6 @@ const categorySlice = createSlice({
         state.isloading = true;
       })
       .addCase(getAllProductsByCategoryId.fulfilled, (state, action) => {
-        console.log("payload", action.payload);
         state.isloading = false;
         state.allCategoryProducts = action.payload;
       })

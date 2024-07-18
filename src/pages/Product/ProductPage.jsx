@@ -9,15 +9,12 @@ import {
 
 export default function ProductPage({}) {
   let { category } = useParams();
-  console.log("caeee", category);
 
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductsByCategoryId(category));
   }, [category]);
   const products = useSelector(getProductonCategory);
-
-  console.log("paramas", products);
 
   return (
     <div className="flex flex-col w-full h-auto  xl:px-[15px] 2xl:px-[16%] font-titleFont">

@@ -18,11 +18,7 @@ function HeaderComponent() {
   const { toogle, setToogle, isSearchOpen, setISearchOpen } =
     useContext(toogleContext);
   const { cart, wishlist } = useSelector((state) => state?.eShopeReducer?.user);
-  console.log(
-    "asdasdasdsad",
-    cart.cartItems.length,
-    wishlist.wishlistItems.length
-  );
+
   return (
     <div>
       <div className="flex  xs:w-[414px] sm:w-full h-20 border-b-[1px] border-b-[#00000033]  font-titleFont items-center justify-center">

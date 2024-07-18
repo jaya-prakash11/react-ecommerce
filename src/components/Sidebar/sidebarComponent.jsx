@@ -7,7 +7,6 @@ import { addToCart, removeFromCart } from "../../Redux/feature/cart/cartSlice";
 
 function SidebarComponent({ product }) {
   let dispatch = useDispatch();
-  console.log("testts", product?.count);
   const [count, setCount] = useState(product?.count);
   const [isAddToCart, setIsAddToCart] = useState(false);
 
@@ -19,7 +18,6 @@ function SidebarComponent({ product }) {
     dispatch(addToCart({ ...product, count: count }));
   }, [count]);
 
-  console.log("producta", product);
   return (
     <div className="flex w-full border-b-[1px] border-b-black">
       <div className="flex w-[40%] h-56 justify-center items-center">

@@ -35,7 +35,6 @@ function ModalComponent({
     setCount(product?.count || 1);
   }, [product?.count]);
 
-  console.log("KLIO", Object.keys(isAddedToCart).length !== 0);
   return (
     <Modal
       centered

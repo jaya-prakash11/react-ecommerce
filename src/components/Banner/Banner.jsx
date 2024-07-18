@@ -15,7 +15,6 @@ export default function Banner() {
   const nextSlide = () => {
     setCurrentSlide(currentSlide == 3 ? 0 : (prev) => prev + 1);
   };
-  console.log("Slide", currentSlide);
   return (
     <div className="xs:w-full h-auto overflow-x-hidden ">
       <div className="w-full relative ">

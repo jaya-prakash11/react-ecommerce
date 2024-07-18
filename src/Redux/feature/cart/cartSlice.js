@@ -20,7 +20,6 @@ const cartSlice = createSlice({
       });
 
       if (item) {
-        console.log("inside if");
         state.cartItems[index] = {
           ...item,
           count: payload.count,

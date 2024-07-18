@@ -5,7 +5,6 @@ function ButtonComponent({
   productCount = 1,
   setProductCount = () => {},
 }) {
-  console.log("productCount", productCount);
   if (type == "basic") {
     return (
       <div className="flex w-36 h-10  border border-black justify-between items-center px-4 rounded-sm">

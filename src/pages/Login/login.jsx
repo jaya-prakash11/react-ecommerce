@@ -33,8 +33,6 @@ function LoginPage() {
           avatar: "https://picsum.photos/800",
         }
       );
-
-      console.log("responseere", response);
     } catch (err) {}
   };
 
@@ -44,8 +42,6 @@ function LoginPage() {
         email: "john@mail.com",
         password: "changeme",
       });
-
-      console.log("responseere", response);
 
       setAuth({
         user: { email, passsword },

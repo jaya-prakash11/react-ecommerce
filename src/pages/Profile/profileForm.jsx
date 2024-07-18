@@ -22,7 +22,6 @@ function ProfileForm({
     if (type == "edit") setNewAddress(res);
   }, [res]);
 
-  console.log("fioioio", res);
   const dispatch = useDispatch();
   const onSubmitHandel = () => {
     if (type == "create") {

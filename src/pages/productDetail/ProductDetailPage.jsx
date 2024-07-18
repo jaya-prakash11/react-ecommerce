@@ -55,7 +55,6 @@ function ProductDetailPage() {
     ? product?.image
     : "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
 
-  console.log("tets", cartedProduct?.count);
   return (
     <div className="flex flex-col w-full h-auto  xs:px-3 xl:px-[15px] 2xl:px-[16%] font-titleFont ">
       <div className="flex h-auto xs:flex-col  md:flex-row w-full auto mt-16">

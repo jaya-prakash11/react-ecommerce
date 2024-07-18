@@ -7,7 +7,6 @@ function ProfilePage() {
   const navigate = useNavigate();
   const { auth, setAuth } = useAuth();
   useEffect(() => {
-    console.log("insideprofile", auth);
     if (auth.accesstoken) {
       navigate("/profile/userInfo");
     }

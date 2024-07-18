@@ -8,11 +8,10 @@ export default function ProductComponent({ title, value = [], to = "" }) {
 
   useEffect(() => {
     let a = value.slice(0, 5);
-    console.log("sdsddddd", a);
+
     setProducts(a);
   }, [value]);
 
-  console.log("asdsadadsd", products);
   return (
     <div className=" flex flex-col w-full py-4  xl:px-[15px] 2xl:px-[16%] h-auto">
       <div className="flex flex-col w-full h-auto gap-3">
