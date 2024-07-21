@@ -7,9 +7,9 @@ export default function ProductComponent({ title, value = [], to = "" }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let a = value.slice(0, 5);
+    let slicedProducts = value.slice(0, 5);
 
-    setProducts(a);
+    setProducts(slicedProducts);
   }, [value]);
 
   return (

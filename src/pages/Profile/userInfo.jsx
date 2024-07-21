@@ -11,7 +11,6 @@ function UserInfo() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // let isMounted = true;
     const controller = new AbortController();
     const getuser = async () => {
       try {

@@ -18,7 +18,7 @@ const searchData = [
   { name: "jayaprakash" },
   { name: "chris" },
 ];
-function Sidebar({ isOpen, toggleSlideover, side }) {
+function Sidebar({ isOpen, toggleSlideover }) {
   const { toogle, setToogle, isSearchOpen, setISearchOpen } =
     useContext(toogleContext);
   const [searchText, setSearcText] = useState("");

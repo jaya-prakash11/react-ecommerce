@@ -15,22 +15,19 @@ function HeaderComponent() {
   const navigate = useNavigate();
   const { auth } = useAuth();
   const { category } = useSelector((state) => state.eShopeReducer.category);
-  const { toogle, setToogle, isSearchOpen, setISearchOpen } =
-    useContext(toogleContext);
+  const { setToogle, setISearchOpen } = useContext(toogleContext);
   const { cart, wishlist } = useSelector((state) => state?.eShopeReducer?.user);
 
   return (
     <div>
       <div className="flex  xs:w-[414px] sm:w-full h-20 border-b-[1px] border-b-[#00000033]  font-titleFont items-center justify-center">
         <div className="flex w-full h-full justify-between items-center lg:mx-32 xs:mx-6">
-          {/* <div> */}
           <NavLink to={"/"} className="flex justify-center items-center gap-2">
             <img className="xs:h-5 sm:h-6 lg:h-12 " src={Ecommercelogo}></img>
             <p className="text-black lg:text-lg xs:text-sm   font-bold">
               ShopCart
             </p>
           </NavLink>
-          {/* </div> */}
           <div>
             <ul className="flex items-center gap-4">
               <li>
@@ -55,7 +52,6 @@ function HeaderComponent() {
                   }
                 >
                   <div className="flex rounded-xl   h-3 w-3 bg-black absolute bottom-3 right-0 justify-center items-center">
-                    {" "}
                     <p className="text-white text-[11px]">
                       {wishlist?.wishlistItems?.length}
                     </p>

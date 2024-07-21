@@ -10,7 +10,7 @@ import {
 import ProfilePage from "../Profile/profilePage";
 
 export default function Home() {
-  const [cate, setCat] = useState();
+  const [cate, setCategory] = useState();
   const dispatch = useDispatch();
   const { category, allCategoryProducts } = useSelector(
     (state) => state?.eShopeReducer?.category
@@ -24,12 +24,12 @@ export default function Home() {
   }, [category]);
 
   useEffect(() => {
-    let ad = {};
+    let category = {};
     allCategoryProducts.map((res, ind) => {
-      let a = Object.keys(res);
-      ad[a] = res[a];
+      let key = Object.keys(res);
+      category[key] = res[key];
     });
-    setCat(ad);
+    setCategory(category);
   }, [allCategoryProducts]);
 
   return (

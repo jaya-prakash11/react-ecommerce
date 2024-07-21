@@ -45,7 +45,6 @@ function CardComponent({ style, price, image, title, productId, product }) {
       <div
         onClick={(e) => {
           navigation(`/Product/${productId}`);
-          // e.stopPropagation();
         }}
         class={cardStyle}
       >

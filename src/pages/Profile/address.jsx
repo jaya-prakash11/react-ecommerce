@@ -6,7 +6,7 @@ import { Button } from "antd";
 import ProfileForm from "./profileForm";
 
 function Address() {
-  const { userDetail, address } = useSelector(
+  const { address } = useSelector(
     (state) => state.eShopeReducer?.user.userInfo
   );
   const [addAddressOpen, setAddressOpen] = useState(false);
